@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Perfil de Cliente</title>
+    <style>
+        /* Estilos para el encabezado */
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Estilos para las pestañas */
+        .tab-buttons-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        /* Estilos para las ventanas emergentes */
+        .popup {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 9999;
+            width: 80%; /* Ancho de la ventana emergente */
+            max-height: 70vh; /* Altura máxima de la ventana emergente */
+            overflow-y: auto; /* Permitir desplazamiento vertical si el contenido excede la altura máxima */
+        }
+        /* Estilos para el botón de aceptar términos y condiciones */
+        #accept-terms {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con imagen y texto de bienvenida -->
+    <div id="header">
+        <img src="ruta/a/la/imagen.jpg" alt="Logo" width="200">
+        <p>Gracias por su preferencia,<br>Le agradecemos completar la siguiente información según corresponda para así crear su perfil de cliente para la facturación de sus servicios.</p>
+        <p><strong>1. Elija su categoría según las indicaciones de su Asesor de Viajes de Terranova.</strong></p>
+    </div>
+
+    <!-- Pestañas de categorías -->
+    <div class="tab-buttons-container">
+        <button class="tab-button" onclick="openPopup('nacional-vacacional')">Nacional Vacacional</button>
+        <button class="tab-button" onclick="openPopup('nacional-corporativo')">Nacional Corporativo</button>
+        <button class="tab-button" onclick="openPopup('internacional')">Internacional</button>
+        <button class="tab-button" onclick="openPopup('agente-viajes')">Agente de Viajes</button>
+        <button class="tab-button" onclick="openPopup('suplidor')">Suplidor</button>
+    </div>
+
+    <!-- Ventanas emergentes -->
+    <div id="popup-nacional-vacacional" class="popup" style="left: 50%; transform: translateX(-50%);">
+        <h3>Ejecutivo que le atiende:</h3>
+        <p>* Ejecutivo</p>
+
+        <h3>Complete la siguiente información:</h3>
+        <form>
+            <label for="nombre">Nombre Completo:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            <!-- Resto del formulario para Nacional Vacacional -->
+        </form>
+
+        <p>Toda la información contenida en este sitio solo podrá ser utilizada por el usuario de manera responsable, adecuada y bien intencionada. Los datos y documentos serán protegidos y de uso exclusivo para los trámites de facturación respectivos.</p>
+        <p>En Vacaciones Diseñadas Terranova S.A., reconocemos la importancia de la seguridad, privacidad, confidencialidad de la información y los datos personales suministrados a través de los diversos canales (incluyendo sitio web, oficina de venta, aplicaciones móviles y otros medios electrónicos). Es por esto que nuestro compromiso con la protección y tratamiento adecuado de la información es conforme a los regímenes legales de protección de datos personales aplicables en nuestro territorio, entre otros: Autodeterminación informativa, Protección de Datos Ley 8968.</p>
+    </div>
+
+    <div id="popup-nacional-corporativo" class="popup" style="left: 50%; transform: translateX(-50%);">
+        <h3>Nacional Corporativo</h3>
+
+        <h3>Ejecutivo que le atiende:</h3>
+        <p>* Ejecutivo</p>
+
+        <h3>Complete la siguiente información:</h3>
+        <form>
+            <label for="razon-social">Razón Social:</label><br>
+            <input type="text" id="razon-social" name="razon-social" required><br><br>
+            <label for="tipo-documento">Tipo de Documento:</label><br>
+            <select id="tipo-documento" name="tipo-documento">
+                <option value="cedula">Cédula</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select><br><br>
+            <label for="numero-cedula">Número de Cédula:</label><br>
+            <input type="text" id="numero-cedula" name="numero-cedula" required><br><br>
+            <label for="nombre-comercial">Nombre Comercial:</label><br>
+            <input type="text" id="nombre-comercial" name="nombre-comercial" required><br><br>
+            <label for="codigo-cliente">Código Cliente Corporativo:</label><br>
+            <input type="text" id="codigo-cliente" name="codigo-cliente" required><br><br>
+            <label for="representante-legal">Representante Legal:</label><br>
+            <input type="text" id="representante-legal" name="representante-legal" required><br><br>
+            <label for="pais-residencia">País de Residencia:</label><br>
+            <select id="pais-residencia" name="pais-residencia">
+                <option value="costa-rica">Costa Rica</option>
+                <!-- Agrega más opciones según sea necesario -->
+            </select><br><br>
+            <label>Dirección Física:</label><br>
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" required><br><br>
+            <label for="canton">Cantón:</label>
+            <input type="text" id="canton" name="canton" required><br><br>
+            <label for="distrito">Distrito:</label>
+            <input type="text" id="distrito" name="distrito" required><br><br>
+            <label for="direccion">Dirección Exacta:</label><br>
+            <input type="text" id="direccion" name="direccion" required><br><br>
+            <label for="nombre-contacto">Nombre del Contacto:</label><br>
+            <input type="text" id="nombre-contacto" name="nombre-contacto" required><br><br>
+            <!-- Resto del formulario para Nacional Corporativo -->
+            <input type="checkbox" id="accept-terms" required>
+            <label for="accept-terms">Acepto los Términos y Condiciones.</label><br><br>
+            <input type="checkbox" id="receive-promotions">
+            <label for="receive-promotions">Acepto recibir información de promociones.</label><br><br>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <p>Toda la información contenida en este sitio solo podrá ser utilizada por el usuario de manera responsable, adecuada y bien intencionada. Los datos y documentos serán protegidos y de uso exclusivo para los trámites de facturación respectivos.</p>
+        <p>En Vacaciones Diseñadas Terranova S.A., reconocemos la importancia de la seguridad, privacidad, confidencialidad de la información y los datos personales suministrados a través de los diversos canales (incluyendo sitio web, oficina de venta, aplicaciones móviles y otros medios electrónicos). Es por esto que nuestro compromiso con la protección y tratamiento adecuado de la información es conforme a los regímenes legales de protección de datos personales aplicables en nuestro territorio, entre otros: Autodeterminación informativa, Protección de Datos Ley 8968.</p>
+    </div>
+
+    <!-- Agrega las ventanas emergentes restantes para las otras categorías -->
+
+    <script>
+        var currentPopup = null;
+
+        // Función para abrir la ventana emergente correspondiente a cada categoría
+        function openPopup(category) {
+            var popup = document.getElementById('popup-' + category);
+            if (currentPopup !== null) {
+                currentPopup.style.display = "none";
+            }
+            popup.style.display = "block";
+            currentPopup = popup;
+        }
+    </script>
+</body>
+</html>
