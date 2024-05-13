@@ -201,31 +201,29 @@
             popup.style.display = "block";
             currentPopup = popup;
         }
-    </script>
-
-	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("pOCELBJrCGoKTqOJD"); // Reemplazar "YOUR_USER_ID" con tu ID de usuario de EmailJS
-        })();
 
         // Función para enviar el formulario por correo electrónico
         function sendEmail(formId, event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+            event.preventDefault(); // Evitar el envío del formulario por defecto
 
-    // Obtener los datos del formulario
-    var formData = new FormData(document.getElementById(formId));
+            // Obtener los datos del formulario
+            var formData = new FormData(document.getElementById(formId));
 
-    // Enviar el correo electrónico utilizando EmailJS
-    emailjs.sendForm('service_zx315vc', 'template_fxv9lio', formData)
-        .then(function(response) {
-            console.log('Correo electrónico enviado con éxito:', response);
-            // Aquí puedes agregar cualquier acción adicional después de enviar el correo electrónico, como mostrar un mensaje de éxito
-        }, function(error) {
-            console.error('Error al enviar el correo electrónico:', error);
-            // Aquí puedes agregar cualquier acción adicional en caso de error, como mostrar un mensaje de error al usuario
-        });
-     }
+            // Enviar el formulario a FormSubmit
+            fetch('https://formsubmit.co/your@email.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Aquí puedes agregar cualquier acción adicional después de enviar el correo electrónico
+            })
+            .catch(error => {
+                console.error('Error al enviar el correo electrónico:', error);
+                // Aquí puedes agregar cualquier acción adicional en caso de error, como mostrar un mensaje de error al usuario
+            });
+        }
     </script>
 
 </body>
